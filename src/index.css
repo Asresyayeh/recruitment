@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: custom styles after Tailwind */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Ensure full-width sections */
+html, body, #root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove any default padding/margin that might cause issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Optional: Add smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
