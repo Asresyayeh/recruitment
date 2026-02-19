@@ -1,22 +1,47 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="w-full fixed top-0 left-0 right-0 z-50 bg-white/5 backdrop-blur-md border-b border-white/10">
+    <header
+      className={`w-full fixed top-0 left-0 right-0 z-50 bg-white/5 backdrop-blur-md border-b border-white/10 transition-colors duration-300`}
+    >
       <div className="flex items-center justify-between px-6 md:px-8 py-5">
         {/* Logo */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-2xl bg-green-500 flex items-center justify-center font-bold text-xl shadow-lg">
             R
           </div>
-          <h1 className="text-xl font-semibold tracking-wide">RecruitPro</h1>
+          <h1
+            className={`text-xl font-semibold tracking-wide transition-colors duration-300 ${
+              scrolled ? "text-white" : "text-black"
+            }`}
+          >
+            RecruitPro
+          </h1>
         </div>
 
-        {/* Navigation Links (Desktop) */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        {/* Navigation Links (Desktop Only) */}
+        <nav
+          className={`hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300 ${
+            scrolled ? "text-white" : "text-black"
+          }`}
+        >
           <a href="#home" className="hover:text-green-400 transition">
             Home
           </a>
@@ -33,22 +58,6 @@ export default function Navbar() {
             Contact
           </a>
         </nav>
-
-        {/* Auth Buttons
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            to="/login"
-            className="border border-green-500 text-green-400 px-5 py-2 rounded-2xl hover:bg-green-500 hover:text-black transition"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            className="bg-green-500 hover:bg-green-400 text-black px-5 py-2 rounded-2xl transition"
-          >
-            Sign Up
-          </Link>
-        </div> */}
 
         {/* Mobile Hamburger */}
         <div className="md:hidden flex items-center">
@@ -90,6 +99,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-black/60 backdrop-blur-md border-t border-white/10 px-6 py-4 flex flex-col gap-4">
@@ -128,23 +138,6 @@ export default function Navbar() {
           >
             Contact
           </a>
-
-          {/* <div className="flex flex-col gap-3 mt-4">
-            <Link
-              to="/login"
-              className="border border-green-500 text-green-400 px-5 py-2 rounded-2xl hover:bg-green-500 hover:text-black transition text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="bg-green-500 hover:bg-green-400 text-black px-5 py-2 rounded-2xl transition text-center"
-              onClick={() => setIsOpen(false)}
-            >
-              Sign Up
-            </Link>
-          </div> */}
         </div>
       )}
     </header>

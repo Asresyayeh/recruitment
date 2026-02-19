@@ -9,6 +9,7 @@ import JobsSection from "./pages/JobsSection";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
                 <Home />
                 <About />
                 <JobsSection />
+                <Contact />
                 <Footer />
               </>
             }
