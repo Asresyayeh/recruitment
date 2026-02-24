@@ -10,7 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-
+import JobsPage from "./pages/JobsPage";
 function App() {
   return (
     <Router>
@@ -33,6 +33,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/jobs" element={<JobsPage />} />
         </Routes>
       </div>
     </Router>

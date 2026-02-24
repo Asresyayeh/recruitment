@@ -48,9 +48,7 @@ export default function Navbar() {
           <a href="#jobs" className="hover:text-green-400 transition">
             Jobs
           </a>
-          <a href="#companies" className="hover:text-green-400 transition">
-            Companies
-          </a>
+
           <a href="#about" className="hover:text-green-400 transition">
             About
           </a>
@@ -117,13 +115,7 @@ export default function Navbar() {
           >
             Jobs
           </a>
-          <a
-            href="#companies"
-            className="text-white hover:text-green-400 transition text-lg font-medium"
-            onClick={() => setIsOpen(false)}
-          >
-            Companies
-          </a>
+
           <a
             href="#about"
             className="text-white hover:text-green-400 transition text-lg font-medium"

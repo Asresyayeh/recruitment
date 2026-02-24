@@ -1,5 +1,5 @@
-// components/JobsSection.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 
 const categories = ["Development", "Design", "Marketing"];
 
@@ -29,9 +29,12 @@ const JobsSection = () => {
                     Browse top {category.toLowerCase()} roles from leading
                     companies.
                   </p>
-                  <button className="border border-green-500 text-green-400 px-5 py-2 rounded-2xl hover:bg-green-500 hover:text-black transition">
+                  <Link
+                    to="/jobs"
+                    className="border border-green-500 text-green-400 px-5 py-2 rounded-2xl hover:bg-green-500 hover:text-black transition inline-block"
+                  >
                     View Jobs
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>
