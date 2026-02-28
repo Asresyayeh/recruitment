@@ -11,6 +11,7 @@ import SignupPage from "./pages/SignupPage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import JobsPage from "./pages/JobsPage";
+import PostJob from "./pages/PostJob";
 function App() {
   return (
     <Router>
@@ -34,6 +35,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
           <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/post" element={<PostJob />} />
         </Routes>
       </div>
     </Router>

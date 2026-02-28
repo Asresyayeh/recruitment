@@ -51,9 +51,12 @@ const JobsSection = () => {
               Post your job openings and connect with thousands of qualified
               candidates.
             </p>
-            <button className="bg-green-500 hover:bg-green-400 text-black rounded-2xl px-10 py-3 transition">
-              Post a Job
-            </button>
+
+            <Link to="/post">
+              <button className="bg-green-500 hover:bg-green-400 text-black rounded-2xl px-10 py-3 transition">
+                Post a Job
+              </button>
+            </Link>
           </div>
         </div>
       </section>
