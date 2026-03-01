@@ -12,6 +12,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import JobsPage from "./pages/JobsPage";
 import PostJob from "./pages/PostJob";
+import RecruiterDashboard from "./pages/RecruiterDashboard";
+import CompanyForm from "./pages/CompanyForm";
 function App() {
   return (
     <Router>
@@ -36,6 +38,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/jobs" element={<JobsPage />} />
           <Route path="/post" element={<PostJob />} />
+          <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
+          <Route path="/recruiter/create-company" element={<CompanyForm />} />
         </Routes>
       </div>
     </Router>
