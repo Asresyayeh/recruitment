@@ -14,6 +14,8 @@ import JobsPage from "./pages/JobsPage";
 import PostJob from "./pages/PostJob";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
 import CompanyForm from "./pages/CompanyForm";
+import CompanyVerifyPage from "./pages/CompanyVerifyPage";
+import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <Router>
@@ -40,6 +42,8 @@ function App() {
           <Route path="/post" element={<PostJob />} />
           <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
           <Route path="/recruiter/create-company" element={<CompanyForm />} />
+          <Route path="/company/verify" element={<CompanyVerifyPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
