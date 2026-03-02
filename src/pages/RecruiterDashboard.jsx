@@ -12,7 +12,7 @@ export default function RecruiterDashboard() {
 
   const fetchCompany = async () => {
     try {
-      const res = await api.get("/recruiter/company");
+      const res = await api.get("/companies");
       setCompany(res.data.company);
     } catch (error) {
       console.error("Error fetching company:", error);
@@ -31,7 +31,6 @@ export default function RecruiterDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-
       {/* NO COMPANY */}
       {!company && (
         <div className="max-w-xl mx-auto bg-yellow-100 p-6 rounded-lg shadow">
@@ -54,11 +53,10 @@ export default function RecruiterDashboard() {
       {/* PENDING */}
       {company && company.status === "pending" && (
         <div className="max-w-xl mx-auto bg-blue-100 p-6 rounded-lg shadow">
-          <h2 className="text-xl font-bold mb-2">
-            Company Under Review
-          </h2>
+          <h2 className="text-xl font-bold mb-2">Company Under Review</h2>
           <p className="text-gray-700">
-            Your company <strong>{company.name}</strong> is waiting for admin approval.
+            Your company <strong>{company.name}</strong> is waiting for admin
+            approval.
           </p>
         </div>
       )}
@@ -66,12 +64,10 @@ export default function RecruiterDashboard() {
       {/* REJECTED */}
       {company && company.status === "rejected" && (
         <div className="max-w-xl mx-auto bg-red-100 p-6 rounded-lg shadow">
-          <h2 className="text-xl font-bold mb-2">
-            Company Rejected
-          </h2>
+          <h2 className="text-xl font-bold mb-2">Company Rejected</h2>
           <p className="text-gray-700 mb-4">
-            Your company <strong>{company.name}</strong> was rejected.
-            Please update and resubmit.
+            Your company <strong>{company.name}</strong> was rejected. Please
+            update and resubmit.
           </p>
 
           <Link
@@ -87,16 +83,13 @@ export default function RecruiterDashboard() {
       {company && company.status === "approved" && (
         <>
           <div className="bg-white p-6 rounded-lg shadow mb-6">
-            <h1 className="text-2xl font-bold">
-              Welcome, {company.name}
-            </h1>
+            <h1 className="text-2xl font-bold">Welcome, {company.name}</h1>
             <p className="text-gray-600 mt-2">
               Manage your job postings and applications.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-
             <Link
               to="/recruiter/create-job"
               className="bg-blue-600 text-white p-6 rounded-lg shadow hover:bg-blue-700"
@@ -120,11 +113,9 @@ export default function RecruiterDashboard() {
               <h2 className="text-xl font-bold">View Applications</h2>
               <p className="mt-2">Review candidate applications.</p>
             </Link>
-
           </div>
         </>
       )}
-
     </div>
   );
 }

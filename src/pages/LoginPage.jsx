@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../api/axios"; // your axios instance
+import api from "../api/axios";
 
 export default function LoginPage() {
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
-  // Handle input changes
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -21,31 +19,31 @@ export default function LoginPage() {
       const res = await api.post("/login", form);
       const { token, user } = res.data;
 
-      // Store token securely
       localStorage.setItem("token", token);
 
-      // Redirect based on role and status
       if (user.role === "candidate") {
         navigate("/applicant/dashboard");
         return;
       }
 
       if (user.role === "recruiter") {
-        navigate("/recruiter/dashboard");
+        if (user.company) {
+          navigate("/dashboard");
+        } else {
+          navigate("/recruiter/dashboard");
+        }
+
         return;
       }
-
       if (user.role === "admin") {
         navigate("/admin/dashboard");
         return;
       }
 
-      // fallback
       setError("Unknown role, contact support.");
     } catch (err) {
       console.error(err.response?.data);
 
-      // Show backend validation errors
       if (err.response?.status === 422) {
         const validationErrors = err.response.data.errors;
         const firstError = Object.values(validationErrors)[0][0];

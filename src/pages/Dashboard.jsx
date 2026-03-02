@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const [company, setCompany] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadCompany = async () => {
@@ -17,75 +19,162 @@ export default function Dashboard() {
     loadCompany();
   }, []);
 
+  const handleDeleteCompany = async () => {
+    if (!window.confirm("Are you sure you want to delete this company?"))
+      return;
+
+    try {
+      await api.delete("/recruiter/company");
+
+      setCompany(null);
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        user.company = null;
+        localStorage.setItem("user", JSON.stringify(user));
+      }
+    } catch (error) {
+      console.error("Delete company error:", error);
+    }
+  };
+
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Recruiter Dashboard</h1>
+    <section
+      id="dashboard"
+      className="w-full min-h-screen py-20 bg-gradient-to-br from-green-900 via-green-850 to-black text-white"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <h1 className="text-4xl font-bold mb-10 text-green-400">
+          Recruiter Dashboard
+        </h1>
 
-      {/* Company Status Card */}
-      <div className="bg-white shadow rounded-2xl p-6 mb-8">
-        <h2 className="text-xl font-semibold mb-4">Company Profile</h2>
+        {/* Company Profile Card */}
+        <div className="bg-white/10 backdrop-blur-lg shadow-xl rounded-2xl p-8 mb-10 border border-green-500/30">
+          <h2 className="text-2xl font-semibold mb-6 text-green-400">
+            Company Profile
+          </h2>
 
-        {company ? (
-          <div className="space-y-2 text-gray-700">
-            <p>
-              <span className="font-semibold">Name:</span> {company.name}
-            </p>
+          {company ? (
+            <div className="space-y-4 text-gray-200">
+              <p>
+                <span className="font-semibold text-green-400">Name:</span>{" "}
+                {company.name}
+              </p>
 
-            <p>
-              <span className="font-semibold">Verification Status:</span>
+              <p>
+                <span className="font-semibold text-green-400">
+                  Description:
+                </span>{" "}
+                {company.description}
+              </p>
 
-              <span
-                className={`ml-2 px-3 py-1 rounded-full text-white text-sm
-                ${company.is_verified ? "bg-green-500" : "bg-yellow-500"}`}
+              <p>
+                <span className="font-semibold text-green-400">Website:</span>{" "}
+                {company.website}
+              </p>
+
+              <p>
+                <span className="font-semibold text-green-400">Address:</span>{" "}
+                {company.address}
+              </p>
+
+              <p>
+                <span className="font-semibold text-green-400">Domain:</span>{" "}
+                {company.company_domain}
+              </p>
+
+              <p>
+                <span className="font-semibold text-green-400">
+                  Verification Status:
+                </span>
+
+                <span
+                  className={`ml-3 px-4 py-1 rounded-full text-white text-sm ${
+                    company.is_verified ? "bg-green-600" : "bg-yellow-600"
+                  }`}
+                >
+                  {company.is_verified ? "Verified" : "Pending Verification"}
+                </span>
+              </p>
+
+              {/* Logo */}
+              {company.logo && (
+                <div className="mt-4">
+                  <p className="font-semibold text-green-400 mb-2">Logo:</p>
+                  <img
+                    src={company.logo}
+                    alt="Company Logo"
+                    className="w-28 h-28 object-cover rounded-xl border border-green-500"
+                  />
+                </div>
+              )}
+
+              {/* Delete Button */}
+              <button
+                onClick={handleDeleteCompany}
+                className="mt-6 bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl transition"
               >
-                {company.is_verified ? "Verified" : "Pending Verification"}
-              </span>
+                Delete Company
+              </button>
+            </div>
+          ) : (
+            <p className="text-gray-400">Loading company data...</p>
+          )}
+        </div>
+
+        {/* Action Cards Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Post Job */}
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
+            <h3 className="text-2xl font-semibold mb-4 text-green-400">
+              Post New Job
+            </h3>
+
+            <p className="text-gray-300 mb-6">
+              Create job listing and attract candidates.
             </p>
+
+            <button className="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl transition">
+              Create Job
+            </button>
           </div>
-        ) : (
-          <p>Loading company data...</p>
-        )}
-      </div>
 
-      {/* Action Cards Grid */}
-      <div className="grid md:grid-cols-3 gap-6">
-        {/* Post Job Card */}
-        <div className="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3">Post New Job</h3>
+          {/* Manage Company */}
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
+            <h3 className="text-2xl font-semibold mb-4 text-green-400">
+              Manage Company
+            </h3>
 
-          <p className="text-gray-500 mb-4">
-            Create job listing and attract candidates.
-          </p>
+            <p className="text-gray-300 mb-6">
+              Update company profile information.
+            </p>
 
-          <button className="w-full bg-blue-600 text-white p-3 rounded-xl hover:bg-blue-700">
-            Create Job
-          </button>
-        </div>
+            <button
+              onClick={() =>
+                navigate("/edit-company", {
+                  state: { company },
+                })
+              }
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl transition"
+            >
+              Edit Company
+            </button>
+          </div>
 
-        {/* Manage Company */}
-        <div className="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3">Manage Company</h3>
+          {/* Applications */}
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
+            <h3 className="text-2xl font-semibold mb-4 text-green-400">
+              Job Applications
+            </h3>
 
-          <p className="text-gray-500 mb-4">
-            Update company profile information.
-          </p>
+            <p className="text-gray-300 mb-6">Review candidate applications.</p>
 
-          <button className="w-full bg-green-600 text-white p-3 rounded-xl hover:bg-green-700">
-            Edit Company
-          </button>
-        </div>
-
-        {/* Applications */}
-        <div className="bg-white shadow rounded-2xl p-6 hover:shadow-lg transition">
-          <h3 className="text-xl font-semibold mb-3">Job Applications</h3>
-
-          <p className="text-gray-500 mb-4">Review candidate applications.</p>
-
-          <button className="w-full bg-purple-600 text-white p-3 rounded-xl hover:bg-purple-700">
-            View Applications
-          </button>
+            <button className="w-full bg-purple-600 hover:bg-purple-500 text-white py-3 rounded-xl transition">
+              View Applications
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
