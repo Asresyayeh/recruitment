@@ -24,6 +24,14 @@ const PostJob = () => {
     try {
       await api.post("/jobs", formData);
       alert("Job posted successfully!");
+      setFormData({
+        title: "",
+        description: "",
+        location: "",
+        type: "",
+        salary: "",
+        category: "",
+      });
     } catch (error) {
       console.error(error.response?.data);
       alert("Error posting job");

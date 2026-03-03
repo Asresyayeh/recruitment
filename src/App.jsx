@@ -17,6 +17,8 @@ import CompanyForm from "./pages/CompanyForm";
 import CompanyVerifyPage from "./pages/CompanyVerifyPage";
 import Dashboard from "./pages/Dashboard";
 import EditCompany from "./pages/EditCompany";
+import RecruiterJobsPage from "./pages/RecruiterJobsPage";
+import EditJob from "./pages/EditJob";
 function App() {
   return (
     <Router>
@@ -35,7 +37,6 @@ function App() {
               </>
             }
           />
-
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
@@ -46,6 +47,8 @@ function App() {
           <Route path="/company/verify" element={<CompanyVerifyPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/edit-company" element={<EditCompany />} />
+          <Route path="/recruiter-jobs" element={<RecruiterJobsPage />} />
+          <Route path="/jobs/edit/:id" element={<EditJob />} />{" "}
         </Routes>
       </div>
     </Router>

@@ -133,8 +133,11 @@ export default function Dashboard() {
             <p className="text-gray-300 mb-6">
               Create job listing and attract candidates.
             </p>
-
-            <button className="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl transition">
+            <button
+              type="button"
+              onClick={() => navigate("/post")}
+              className="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl transition"
+            >
               Create Job
             </button>
           </div>
@@ -158,6 +161,22 @@ export default function Dashboard() {
               className="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl transition"
             >
               Edit Company
+            </button>
+          </div>
+          <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
+            <h3 className="text-2xl font-semibold mb-4 text-green-400">
+              View Posted Jobs
+            </h3>
+
+            <p className="text-gray-300 mb-6">
+              view and update and delete the jobs
+            </p>
+            <button
+              type="button"
+              onClick={() => navigate("/recruiter-jobs")}
+              className="w-full bg-green-600 hover:bg-green-500 text-white py-3 rounded-xl transition"
+            >
+              View Jobs
             </button>
           </div>
 
