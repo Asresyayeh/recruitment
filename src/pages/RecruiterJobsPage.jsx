@@ -41,7 +41,7 @@ const RecruiterJobsPage = () => {
           <h2 className="text-3xl font-bold text-green-400">My Posted Jobs</h2>
 
           <button
-            onClick={() => navigate("/post-job")}
+            onClick={() => navigate("/post")}
             className="bg-green-500 hover:bg-green-400 text-black font-semibold px-6 py-3 rounded-xl transition"
           >
             + Post New Job
@@ -70,7 +70,11 @@ const RecruiterJobsPage = () => {
 
               <div className="mt-6 flex gap-4">
                 <button
-                  onClick={() => navigate(`/jobs/edit/${job.id}`)}
+                  onClick={() =>
+                    navigate(`/jobs/edit/${job.id}`, {
+                      state: { job },
+                    })
+                  }
                   className="flex-1 bg-green-500 hover:bg-green-400 text-black font-semibold py-2 rounded-lg"
                 >
                   Edit

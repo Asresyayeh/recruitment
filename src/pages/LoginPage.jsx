@@ -22,7 +22,7 @@ export default function LoginPage() {
       localStorage.setItem("token", token);
 
       if (user.role === "candidate") {
-        navigate("/applicant/dashboard");
+        navigate("/home");
         return;
       }
 

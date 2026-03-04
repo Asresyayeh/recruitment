@@ -25,12 +25,16 @@ const JobsSection = () => {
                   <h4 className="text-2xl font-semibold text-green-400">
                     {category}
                   </h4>
+
                   <p className="text-gray-200">
                     Browse top {category.toLowerCase()} roles from leading
                     companies.
                   </p>
+
                   <Link
-                    to="/jobs"
+                    to={`/jobs/category/${category
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`}
                     className="border border-green-500 text-green-400 px-5 py-2 rounded-2xl hover:bg-green-500 hover:text-black transition inline-block"
                   >
                     View Jobs

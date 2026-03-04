@@ -1,18 +1,29 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import api from "../api/axios";
 
 const EditJob = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // const [formData, setFormData] = useState({
+  //   title: "",
+  //   description: "",
+  //   location: "",
+  //   type: "",
+  //   salary: "",
+  //   category: "",
+  // });
+  const jobData = location.state?.job;
 
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    location: "",
-    type: "",
-    salary: "",
-    category: "",
+    title: jobData?.title || "",
+    description: jobData?.description || "",
+    location: jobData?.location || "",
+    type: jobData?.type || "",
+    salary: jobData?.salary || "",
+    category: jobData?.category || "",
   });
 
   const handleChange = (e) => {
@@ -30,7 +41,7 @@ const EditJob = () => {
 
       alert("Job updated successfully!");
 
-      navigate("/recruiter/jobs");
+      navigate("/recruiter-jobs");
     } catch (error) {
       console.error(error.response?.data);
       alert(error.response?.data?.message || "Update failed");

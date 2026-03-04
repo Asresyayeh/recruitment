@@ -40,7 +40,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/jobs/category/:category" element={<JobsPage />} />
           <Route path="/post" element={<PostJob />} />
           <Route path="/recruiter/dashboard" element={<RecruiterDashboard />} />
           <Route path="/recruiter/create-company" element={<CompanyForm />} />
