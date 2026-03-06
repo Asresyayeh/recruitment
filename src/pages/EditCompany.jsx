@@ -16,7 +16,6 @@ export default function EditCompany() {
     company_domain: companyData?.company_domain || "",
   });
 
-  // Input change handler
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -24,7 +23,6 @@ export default function EditCompany() {
     });
   };
 
-  // Update company
   const handleSubmit = async (e) => {
     e.preventDefault();
 
