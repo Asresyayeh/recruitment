@@ -6,7 +6,6 @@ const categories = ["Development", "Design", "Marketing"];
 const JobsSection = () => {
   return (
     <>
-      {/* Jobs Section */}
       <section
         id="jobs"
         className="w-full py-20 bg-gradient-to-br from-green-900 via-green-850 to-black text-white"
@@ -46,7 +45,6 @@ const JobsSection = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="w-full py-20 bg-gradient-to-br from-green-900 via-green-850 to-black text-white">
         <div className="w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
           <div className="max-w-4xl mx-auto text-center">
