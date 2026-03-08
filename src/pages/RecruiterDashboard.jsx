@@ -50,7 +50,6 @@ export default function RecruiterDashboard() {
         </div>
       )}
 
-      {/* PENDING */}
       {company && company.status === "pending" && (
         <div className="max-w-xl mx-auto bg-blue-100 p-6 rounded-lg shadow">
           <h2 className="text-xl font-bold mb-2">Company Under Review</h2>
@@ -61,7 +60,6 @@ export default function RecruiterDashboard() {
         </div>
       )}
 
-      {/* REJECTED */}
       {company && company.status === "rejected" && (
         <div className="max-w-xl mx-auto bg-red-100 p-6 rounded-lg shadow">
           <h2 className="text-xl font-bold mb-2">Company Rejected</h2>
