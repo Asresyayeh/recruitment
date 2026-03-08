@@ -7,14 +7,7 @@ const EditJob = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // const [formData, setFormData] = useState({
-  //   title: "",
-  //   description: "",
-  //   location: "",
-  //   type: "",
-  //   salary: "",
-  //   category: "",
-  // });
+  
   const jobData = location.state?.job;
 
   const [formData, setFormData] = useState({
