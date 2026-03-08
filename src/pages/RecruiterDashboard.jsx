@@ -31,7 +31,6 @@ export default function RecruiterDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      {/* NO COMPANY */}
       {!company && (
         <div className="max-w-xl mx-auto bg-yellow-100 p-6 rounded-lg shadow">
           <h2 className="text-xl font-bold mb-3">
