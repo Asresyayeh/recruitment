@@ -16,7 +16,7 @@ const PostJob = () => {
     const fetchCategories = async () => {
       try {
         const res = await api.get("/categories");
-        setCategories(res.data); // assuming your API returns an array of category names
+        setCategories(res.data);
       } catch (err) {
         console.error("Error fetching categories:", err);
       }
