@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import api from "../api/axios";
 
 const PostJob = () => {
@@ -10,6 +10,19 @@ const PostJob = () => {
     salary: "",
     category: "",
   });
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get("/categories");
+        setCategories(res.data); // assuming your API returns an array of category names
+      } catch (err) {
+        console.error("Error fetching categories:", err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,7 +33,6 @@ const PostJob = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await api.post("/jobs", formData);
       alert("Job posted successfully!");
@@ -50,6 +62,7 @@ const PostJob = () => {
             type="text"
             name="title"
             placeholder="Job Title"
+            value={formData.title}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
@@ -59,6 +72,7 @@ const PostJob = () => {
             name="description"
             placeholder="Job Description"
             rows="4"
+            value={formData.description}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
@@ -68,6 +82,7 @@ const PostJob = () => {
             type="text"
             name="location"
             placeholder="Location"
+            value={formData.location}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
@@ -75,6 +90,7 @@ const PostJob = () => {
 
           <select
             name="type"
+            value={formData.type}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
@@ -90,19 +106,26 @@ const PostJob = () => {
             type="text"
             name="salary"
             placeholder="Salary"
+            value={formData.salary}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
           />
 
-          <input
-            type="text"
+          <select
             name="category"
-            placeholder="Category (IT, Marketing...)"
+            value={formData.category}
             onChange={handleChange}
             className="w-full p-4 rounded-xl bg-black/40 border border-green-500/30 focus:outline-none focus:ring-2 focus:ring-green-400"
             required
-          />
+          >
+            <option value="">Select Category</option>
+            {categories.map((cat, index) => (
+              <option key={index} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
 
           <button
             type="submit"
