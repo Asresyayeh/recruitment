@@ -26,7 +26,6 @@ const RecruiterJobsPage = () => {
       await api.delete(`/jobs/${id}`);
       alert("Job deleted");
 
-      // Refresh list
       setJobs(jobs.filter((job) => job.id !== id));
     } catch (error) {
       console.error(error.response?.data);
