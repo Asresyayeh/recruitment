@@ -76,7 +76,6 @@ export default function RecruiterDashboard() {
         </div>
       )}
 
-      {/* APPROVED DASHBOARD */}
       {company && company.status === "approved" && (
         <>
           <div className="bg-white p-6 rounded-lg shadow mb-6">
