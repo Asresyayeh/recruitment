@@ -29,7 +29,6 @@ const SignupPage = () => {
         );
         navigate("/login");
       } else {
-        // Candidate auto-approved → log in immediately
         const { token, user } = res.data;
         localStorage.setItem("token", token);
         localStorage.setItem("user", JSON.stringify(user));
