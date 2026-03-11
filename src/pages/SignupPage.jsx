@@ -23,7 +23,6 @@ const SignupPage = () => {
     try {
       const res = await api.post("/register", formData);
 
-      // If recruiter, show alert about admin approval
       if (formData.role === "recruiter") {
         alert(
           "Account created! Waiting for admin approval. You cannot login yet.",
