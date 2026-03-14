@@ -19,6 +19,8 @@ import Dashboard from "./pages/Dashboard";
 import EditCompany from "./pages/EditCompany";
 import RecruiterJobsPage from "./pages/RecruiterJobsPage";
 import EditJob from "./pages/EditJob";
+import JobDetail from "./pages/JobDetail";
+import JobApply from "./pages/JobApply";
 function App() {
   return (
     <Router>
@@ -48,7 +50,9 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/edit-company" element={<EditCompany />} />
           <Route path="/recruiter-jobs" element={<RecruiterJobsPage />} />
-          <Route path="/jobs/edit/:id" element={<EditJob />} />{" "}
+          <Route path="/jobs/edit/:id" element={<EditJob />} />
+          <Route path="/jobs/:jobId" element={<JobDetail />} />
+          <Route path="/jobs/:jobId/apply" element={<JobApply />} />
         </Routes>
       </div>
     </Router>
