@@ -21,6 +21,7 @@ import RecruiterJobsPage from "./pages/RecruiterJobsPage";
 import EditJob from "./pages/EditJob";
 import JobDetail from "./pages/JobDetail";
 import JobApply from "./pages/JobApply";
+import MyApplications from "./pages/MyApplications";
 function App() {
   return (
     <Router>
@@ -53,6 +54,7 @@ function App() {
           <Route path="/jobs/edit/:id" element={<EditJob />} />
           <Route path="/jobs/:jobId" element={<JobDetail />} />
           <Route path="/jobs/:jobId/apply" element={<JobApply />} />
+          <Route path="/my/applications" element={<MyApplications />} />
         </Routes>
       </div>
     </Router>

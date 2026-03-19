@@ -11,7 +11,7 @@ const JobDetail = () => {
 
   useEffect(() => {
     api
-      .get(`/jobs/${jobId}`) // ✅ correct endpoint
+      .get(`/jobs/${jobId}`) 
       .then((res) => setJob(res.data))
       .catch((err) => console.log(err));
   }, [jobId]);
