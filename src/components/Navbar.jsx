@@ -325,7 +325,7 @@ export default function Navbar() {
               Profile
             </a>
             <a
-              href="/my-applications"
+              href="/my/applications"
               className="block text-white hover:text-green-400 py-2"
               onClick={() => setIsOpen(false)}
             >

@@ -63,7 +63,7 @@ function MyApplications() {
                 <span className="font-semibold">Resume:</span>{" "}
                 {app.resume_path ? (
                   <a
-                    href={`http://127.0.0.1:8000${app.resume_path}`}
+                    href={`http://127.0.0.1:8000/storage/${app.resume_path}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-500 hover:underline"

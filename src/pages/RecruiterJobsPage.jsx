@@ -85,6 +85,13 @@ const RecruiterJobsPage = () => {
                 >
                   Delete
                 </button>
+
+                <button
+                  onClick={() => navigate(`/jobs/${job.id}/applications`)}
+                  className="flex-1 bg-blue-500 hover:bg-blue-400 text-white font-semibold py-2 rounded-lg"
+                >
+                  View Applications
+                </button>
               </div>
             </div>
           ))}
