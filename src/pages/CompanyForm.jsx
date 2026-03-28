@@ -16,7 +16,6 @@ export default function CompanyForm() {
 
   const [loading, setLoading] = useState(false);
 
-  // Handle text input
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -34,7 +33,6 @@ export default function CompanyForm() {
     }));
   };
 
-  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -53,7 +51,6 @@ export default function CompanyForm() {
 
       alert("Company created successfully!");
 
-      // Redirect to verification page (recommended)
       navigate("/company/verify");
     } catch (error) {
       console.error(error.response?.data);
