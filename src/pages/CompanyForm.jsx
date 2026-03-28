@@ -25,7 +25,6 @@ export default function CompanyForm() {
     }));
   };
 
-  // Handle file upload
   const handleFile = (e) => {
     setForm((prev) => ({
       ...prev,
@@ -56,6 +55,7 @@ export default function CompanyForm() {
       console.error(error.response?.data);
 
       alert(error.response?.data?.message || "Error creating company");
+
     } finally {
       setLoading(false);
     }
