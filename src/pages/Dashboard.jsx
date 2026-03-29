@@ -96,7 +96,6 @@ export default function Dashboard() {
                 </span>
               </p>
 
-              {/* Logo */}
               {company.logo && (
                 <div className="mt-4">
                   <p className="font-semibold text-green-400 mb-2">Logo:</p>
