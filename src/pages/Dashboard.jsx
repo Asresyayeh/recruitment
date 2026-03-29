@@ -48,7 +48,6 @@ export default function Dashboard() {
           Recruiter Dashboard
         </h1>
 
-        {/* Company Profile Card */}
         <div className="bg-white/10 backdrop-blur-lg shadow-xl rounded-2xl p-8 mb-10 border border-green-500/30">
           <h2 className="text-2xl font-semibold mb-6 text-green-400">
             Company Profile
