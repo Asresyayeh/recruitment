@@ -107,7 +107,6 @@ export default function Dashboard() {
                 </div>
               )}
 
-              {/* Delete Button */}
               <button
                 onClick={handleDeleteCompany}
                 className="mt-6 bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl transition"
