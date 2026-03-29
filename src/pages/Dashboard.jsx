@@ -138,7 +138,6 @@ export default function Dashboard() {
             </button>
           </div>
 
-          {/* Manage Company */}
           <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
             <h3 className="text-2xl font-semibold mb-4 text-green-400">
               Manage Company
