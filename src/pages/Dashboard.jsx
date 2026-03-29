@@ -119,7 +119,6 @@ export default function Dashboard() {
           )}
         </div>
 
-        {/* Action Cards Grid */}
         <div className="grid md:grid-cols-3 gap-8">
           {/* Post Job */}
           <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-green-500/30 hover:shadow-xl transition">
