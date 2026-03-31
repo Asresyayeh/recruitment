@@ -10,9 +10,8 @@ const JobApply = () => {
   const [coverLetter, setCoverLetter] = useState("");
   const [resume, setResume] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [alreadyApplied, setAlreadyApplied] = useState(false); // new state
+  const [alreadyApplied, setAlreadyApplied] = useState(false);
 
-  // Fetch job data
   useEffect(() => {
     api
       .get(`/jobs/${jobId}`)
