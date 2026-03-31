@@ -56,7 +56,7 @@ const JobApply = () => {
       });
 
       alert(res.data.message);
-      setAlreadyApplied(true); // disable button after successful submission
+      setAlreadyApplied(true);
       navigate("/my/applications");
     } catch (err) {
       if (err.response && err.response.status === 401) {
