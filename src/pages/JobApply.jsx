@@ -19,7 +19,6 @@ const JobApply = () => {
       .catch((err) => console.error(err));
   }, [jobId]);
 
-  // Check if the user already applied
   useEffect(() => {
     api
       .get("/my/applications")
