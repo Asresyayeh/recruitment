@@ -120,9 +120,9 @@ const PostJob = () => {
             required
           >
             <option value="">Select Category</option>
-            {categories.map((cat, index) => (
-              <option key={index} value={cat}>
-                {cat}
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
               </option>
             ))}
           </select>
