@@ -4,7 +4,7 @@ import api from "../api/axios";
 
 export default function JobsPage() {
   const navigate = useNavigate();
-  const { category } = useParams(); // this should be category ID
+  const { category } = useParams();
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
